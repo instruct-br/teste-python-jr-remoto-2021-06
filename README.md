@@ -192,7 +192,7 @@ com o endereço base da API testada.
 
 Exemplo de aplicação rodando no localhost na porta 8080:
 ```
-k6 run -e API_BASE='http://localhost:8080' tests-open.js
+k6 run -e API_BASE='http://localhost:8080/' tests-open.js
 ```
 
 ## Recomendações finais
