@@ -155,7 +155,7 @@ disponibilizados nos _Frees Tiers_ da [Heroku](https://www.heroku.com/).
 
 Quando finalizar a implementação, adicione o usuário com e-mail
 `jobs@instruct.com.br` como colaborador do app publicado até o fim do prazo
-estipulado. Isso nos garante acesso o endereço em que sua API está publicada,
+estipulado. Isso nos garante acesso ao endereço em que sua API está publicada,
 para seguir com os testes automatizados.
 
 | ⚠️ | Você deve adicionar o usuário com e-mail `jobs@instruct.com.br` no app publicado no Heroku! Não é necessário adicionar acesso ao código fonte num repositório do GitHub. |
@@ -199,7 +199,7 @@ k6 run -e API_BASE='http://localhost:8080/' tests-open.js
 
 - Não deixe para fazer na última hora
 - Atente-se para boas práticas da linguagem, siga a PEP 8
-- Considere escrever automatizados
+- Considere escrever testes automatizados
 - Escreva documentação
     - Mude este README. Descreva sua aplicação, explique o que ela faz e porque é útil.
     - Explique como testar a aplicação
