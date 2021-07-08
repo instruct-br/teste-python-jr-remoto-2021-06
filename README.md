@@ -63,7 +63,7 @@ Abaixo, alguns exemplos de chamadas que serão feitas nessa API:
 ```
 POST /api/projects
 {
-    "name": "titan"
+    "name": "titan",
     "packages": [
         {"name": "Django"},
         {"name": "graphene", "version": "2.0"}
@@ -73,10 +73,10 @@ POST /api/projects
 O código HTTP de retorno deve ser 201 e o corpo esperado na resposta é:
 ```
 {
-    "name": "titan"
+    "name": "titan",
     "packages": [
-        {"name": "Django", "version": "3.2.5" },  // Usou a versão mais recente
-        {"name": "graphene", "version": "2.0" }   // Manteve a versão especificada
+        {"name": "Django", "version": "3.2.5"},  // Usou a versão mais recente
+        {"name": "graphene", "version": "2.0"}   // Manteve a versão especificada
     ]
 }
 ```
@@ -88,7 +88,7 @@ Para uma chamada semelhante ao exemplo abaixo:
 ```
 POST /api/projects
 {
-    "name": "titan"
+    "name": "titan",
     "packages": [
         {"name": "pypypypypypypypypypypy"},
         {"name": "graphene", "version": "1900"}
@@ -98,7 +98,7 @@ POST /api/projects
 O código HTTP de retorno deve ser 400 e o corpo esperado na resposta é:
 ```
 {
-    "error": "One or more packages doesn't exist"
+    "error": "One or more packages don't exist"
 }
 ```
 
@@ -107,10 +107,10 @@ nome na URL:
 ```
 GET /api/projects/titan
 {
-    "name": "titan"
+    "name": "titan",
     "packages": [
-        {"name": "Django", "version": "3.2.5" },
-        {"name": "graphene", "version": "2.0" }
+        {"name": "Django", "version": "3.2.5"},
+        {"name": "graphene", "version": "2.0"}
     ]
 }
 ```
