@@ -1,3 +1,4 @@
+from api.services.api import get_current_package_version
 from rest_framework import generics, viewsets
 
 from .models import Project
