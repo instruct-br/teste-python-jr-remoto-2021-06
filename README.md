@@ -98,7 +98,7 @@ POST /api/projects
 O código HTTP de retorno deve ser 400 e o corpo esperado na resposta é:
 ```
 {
-    "error": "One or more packages don't exist"
+    "error": "One or more packages doesn't exist"
 }
 ```
 
