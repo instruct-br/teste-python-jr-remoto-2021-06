@@ -13,11 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from api import views
 from django.contrib import admin
 from django.urls import include, path, re_path
 from rest_framework import routers
+from rest_framework_swagger.views import get_swagger_view
 
-from api import views
+schema_view = get_swagger_view(title='MagPi')
+
 
 router = routers.SimpleRouter()
 router.register(r'projects', views.ProjectViewSet)
@@ -25,4 +28,5 @@ router.register(r'projects', views.ProjectViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('docs/', schema_view),
 ]

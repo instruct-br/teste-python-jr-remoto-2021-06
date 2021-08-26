@@ -3,6 +3,7 @@ import { Httpx } from 'https://jslib.k6.io/httpx/0.0.3/index.js';
 
 let session = new Httpx({
   baseURL: `${__ENV.API_BASE}api`,
+  // baseURL: `${API_BASE}api`,
   headers: { 'Content-Type': 'application/json' },
 });
 
