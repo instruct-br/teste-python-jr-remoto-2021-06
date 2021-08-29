@@ -1,5 +1,5 @@
 from django.db.models.query import QuerySet
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 
 from .models import Project
 from .serializers import ProjectSerializer
@@ -8,8 +8,10 @@ from .serializers import ProjectSerializer
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    lookup_field = "Name"
+    lookup_field = "name"
 
+# class MyExport(mixins.ListModelMixin, viewsets.GenericViewSet):
+#     """ A really cool function"""
 
 # from django.shortcuts import get_object_or_404
 # from rest_framework import viewsets

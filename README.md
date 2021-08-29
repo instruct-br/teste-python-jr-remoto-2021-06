@@ -71,3 +71,5 @@ A non-normative HTML file listing all valid identifier characters for Unicode 4.
  and characters carrying the Other_ID_Continue property. 
 
  Again, XID_Continue closes this set under NFKC-normalization; it also adds U+00B7 to support Catalan.
+
+http://www.objgen.com/json/models/TRu

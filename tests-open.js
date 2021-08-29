@@ -38,6 +38,7 @@ export default () => {
       "Cria o projeto com sucesso": (r) => r.status === 201,
     });
 
+    console.log(titan.content);
     check(titan, {
       "O pacote Django continua com a versão especificada": (r) => {
         const data = responseToJson(r);
