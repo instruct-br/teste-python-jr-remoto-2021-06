@@ -16,6 +16,7 @@ class PackageSerializer(serializers.ModelSerializer):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
+    """Teste de comentario"""
     class Meta:
         model = Project
         fields = ['name', 'packages']
