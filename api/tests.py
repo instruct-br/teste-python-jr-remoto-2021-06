@@ -20,7 +20,7 @@ class ProjectsTestCase(TestCase):
             name="remake", version="0.6.1", project=ship_of_theseus
         )
         PackageRelease.objects.create(
-            name="just-ship-it", version="0.0.6", project=ship_of_theseus
+            name="ship", version="0.3", project=ship_of_theseus
         )
 
     def test_Project_Apollo(self):
@@ -37,27 +37,29 @@ class ProjectsTestCase(TestCase):
         """Test project has right conficuration"""
         ship_of_theseus = Project.objects.get(name="ship_of_theseus")
         remake = PackageRelease.objects.get(name="remake")
-        just_ship_it = PackageRelease.objects.get(name="just-ship-it")
+        ship = PackageRelease.objects.get(name="ship")
         packages = PackageRelease.objects.select_related("project")
         self.assertEqual(ship_of_theseus.name, "ship_of_theseus")
-        self.assertEqual(just_ship_it.name, "just-ship-it")
-        self.assertEqual(just_ship_it.version, "0.0.6")
+        self.assertEqual(ship.name, "ship")
+        self.assertEqual(ship.version, "0.3")
         self.assertEqual(remake.name, "remake")
         self.assertEqual(remake.version, "0.6.1")
-        self.assertEqual(just_ship_it.project, ship_of_theseus)
+        self.assertEqual(ship.project, ship_of_theseus)
         self.assertEqual(remake.project, ship_of_theseus)
         self.assertTrue(isinstance(ship_of_theseus.id, UUID))
         self.assertTrue(isinstance(remake.id, UUID))
-        self.assertTrue(isinstance(just_ship_it.id, UUID))
-        self.assert_(just_ship_it in packages)
+        self.assertTrue(isinstance(ship.id, UUID))
+        self.assert_(ship in packages)
         self.assert_(remake in packages)
 
     def test_Api_response(self):
-        response_string = b'{"name":"minotaur","packages":[{"name":"eye","version":"1.0"},{"name":"Axe","version":"0.0.4"}]}'
+        # https://www.studytonight.com/post/significance-of-prefix-b-in-a-string-in-python
+        # https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals
+        response_string = b'{"name":"minotaur","packages":[{"name":"bull","version":"0.4.1"},{"name":"Axe","version":"0.0.4"}]}'
         request_dict = {
             "name": "minotaur",
             "packages": [
-                {"name": "eye"},
+                {"name": "bull"},
                 {"name": "Axe", "version": "0.0.4"},
             ],
         }
