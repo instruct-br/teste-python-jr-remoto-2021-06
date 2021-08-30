@@ -11,20 +11,23 @@ content = {"error": "One or more packages doesn't exist"}
 class PackageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PackageRelease
-        fields = ['name', 'version']
-        extra_kwargs = {'version': {'required': False}}
+        fields = ["name", "version"]
+        extra_kwargs = {"version": {"required": False}}
 
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ['name', 'packages']
+        fields = ["name", "packages"]
 
     packages = PackageSerializer(many=True)
 
-    def create(self, validated_data):
+    def check(self, validated_data):
+        # checo se os pacotes tem nomes e versoes validos
         result = []
         packages = validated_data["packages"]
+        if len(packages) == 0:
+            raise ParseError(content)
         for pack in packages:
             name = pack["name"]
             try:
@@ -44,7 +47,12 @@ class ProjectSerializer(serializers.ModelSerializer):
             else:
                 result.append({"version": version, "name": name})
         validated_data["packages"] = result
+        return result
 
+    def create(self, validated_data):
+        result = []
+        result = self.check(validated_data)
+        # salvo no banco
         try:
             project = Project(name=validated_data["name"])
             project.save()

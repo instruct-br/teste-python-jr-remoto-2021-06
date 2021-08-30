@@ -3,9 +3,16 @@
 ### Oque voce precisa? / What you need?
 
 * python_version >= "3.9"
+
   * Verifique usando o comando / Check in "`$ python3 --version`"
   * [Instale usando esse guia / Install using this guide](https://www.python.org/downloads/)
+  * https://www.psycopg.org/install/
+  * No linux
+  * ```bash
+    sudo apt install python3-dev libpq-dev
+    ```
 * pipenv
+
   * Verifique usando o comando / Check in "`$ pipenv  --version`"
   * [Instale usando esse guia / Install using this guide](https://pipenv.pypa.io/en/latest/#install-pipenv-today)
 
@@ -52,7 +59,6 @@ Nela o usuario coloca um nome para o projeto e quais pacotes e versões usadas, 
 
 Tendo o nome do projeto nesse caso vamos chamar de "" Alem disso temos que que saber os pacotes versões se quiser cadastrar vamos usar esse exemplo, como usamos o JSON podemos usar esse montador em de JSON
 
-
 ### Ver todos os projetos
 
 Para ver basta ir na rota e o resultado vai ser parecido:
@@ -65,7 +71,6 @@ Para ver um projeto especifico basta colocar o nome dele na rota e o resultado v
 
 Para deletar basta mandar o HTML:
 
-
 # Como testar?
 
 ### Teste com o K6
@@ -75,7 +80,6 @@ Para um teste externo use o k6, caos não tenha instalado pode instalar nesse [l
 ```bash
 k6 run -e API_BASE='https://rascunho.herokuapp.com/' tests-open.js
 ```
-
 
 ```bash
 k6 run -e API_BASE='http://localhost:8000/' tests-open.js
@@ -89,7 +93,7 @@ Rode esse comando:
 pipenv run python3 manage.py test
 ```
 
-O resultado deve ser como esse: 
+O resultado deve ser como esse:
 
 ### Teste com o SWAGGER (ALFA)
 
@@ -150,7 +154,7 @@ Podemos extrair desses paragrafos a seguinte lista de regras Unicode:
 * spacing combining marks (Mc),
 * decimal number (Nd),
 * connector punctuations (Pc),
-* U+00B7,
+* U+00B7 '·',
 
 Nisso podemos elaborar esse codigo:
 
@@ -163,7 +167,7 @@ from unicodedata import category
 
 if category(name[0]) in starter_list or name[0] == '_' :
     for letter in name[1:]:
-         if category(letter) in not continue_list:
+         if category(letter) in not continue_list and letter != '·' :
                reise XABLAU #TODO
 else:
     reise XABLAU #TODO

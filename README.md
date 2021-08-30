@@ -150,7 +150,7 @@ Podemos extrair desses paragrafos a seguinte lista de regras Unicode:
 * spacing combining marks (Mc),
 * decimal number (Nd),
 * connector punctuations (Pc),
-* U+00B7,
+* U+00B7 '·',
 
 Nisso podemos elaborar esse codigo:
 
@@ -163,7 +163,7 @@ from unicodedata import category
 
 if category(name[0]) in starter_list or name[0] == '_' :
     for letter in name[1:]:
-         if category(letter) in not continue_list:
+         if category(letter) in not continue_list and letter != '·' :
                reise XABLAU #TODO
 else:
     reise XABLAU #TODO

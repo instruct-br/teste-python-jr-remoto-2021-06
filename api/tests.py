@@ -5,6 +5,8 @@ from api.models import Project, PackageRelease
 
 # https://stackoverflow.com/questions/48128714/how-to-make-an-inner-join-in-django
 
+ERROR_DOESNT_EXIST = b'{"error":"One or more packages doesn\'t exist"}'
+
 
 class ProjectsTestCase(TestCase):
     def setUp(self):
@@ -34,7 +36,7 @@ class ProjectsTestCase(TestCase):
         self.assert_(Opps in packages)
 
     def test_Project_Ship_of_Theseus(self):
-        """Test project has right conficuration"""
+        """Test project has right configuration"""
         ship_of_theseus = Project.objects.get(name="ship_of_theseus")
         remake = PackageRelease.objects.get(name="remake")
         ship = PackageRelease.objects.get(name="ship")
@@ -53,6 +55,7 @@ class ProjectsTestCase(TestCase):
         self.assert_(remake in packages)
 
     def test_Api_response(self):
+        """Test full cicle of API"""
         # https://www.studytonight.com/post/significance-of-prefix-b-in-a-string-in-python
         # https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals
         response_string = b'{"name":"minotaur","packages":[{"name":"bull","version":"0.4.1"},{"name":"Axe","version":"0.0.4"}]}'
@@ -83,3 +86,124 @@ class ProjectsTestCase(TestCase):
             response, "", count=None, status_code=204
         )
         self.assertEqual(response.content, b"")
+
+    def test_Api_not_response(self):
+        """Test error mensages of API"""
+        request_dict = {
+            "name": "Medusa",
+            "packages": [
+                {"name": "BreackMirror"},
+                {"name": "StoneVictim123456789", "version": "0.0.4"},
+            ],
+        }
+        c = Client()
+        response = c.post(
+            "/api/projects/",
+            json.dumps(request_dict),
+            content_type="application/json",
+        )
+        self.assertContains(
+            response, "", count=None, status_code=400
+        )
+        self.assertEqual(response.content, ERROR_DOESNT_EXIST)
+        response = c.get('/api/projects/medusa/')
+        self.assertContains(
+            response, "", count=None, status_code=404
+        )
+        self.assertEqual(response.content, b'{"detail":"Not found."}')
+        response = c.delete('/api/projects/medusa/')
+        self.assertContains(
+            response, "", count=None, status_code=404
+        )
+        self.assertEqual(response.content, b'{"detail":"Not found."}')
+
+    def test_check_post_rules(self):
+        """Checking rules of Serializers"""
+        request_dict = {
+            "name": "Dionysus0",
+            "packages": [
+                {"name": "TensorFlow", "version": 10},
+            ],
+        }
+        c = Client()
+        response = c.post(
+            "/api/projects/",
+            json.dumps(request_dict),
+            content_type="application/json",
+        )
+        self.assertContains(
+            response, "", count=None, status_code=400
+        )
+        self.assertEqual(response.content, ERROR_DOESNT_EXIST)
+        request_dict = {
+            "name": "Dionysus1",
+            "packages": [
+                {"name": "TensorFlow", "version": "ten"},
+            ],
+        }
+        response = c.post(
+            "/api/projects/",
+            json.dumps(request_dict),
+            content_type="application/json",
+        )
+        self.assertContains(
+            response, "", count=None, status_code=400
+        )
+        self.assertEqual(response.content, ERROR_DOESNT_EXIST)
+        request_dict = {
+            "name": "Dionysus2",
+            "packages": [
+                {"name": "MoreWinePLEASE"},
+            ],
+        }
+        response = c.post(
+            "/api/projects/",
+            json.dumps(request_dict),
+            content_type="application/json",
+        )
+        self.assertContains(
+            response, "", count=None, status_code=400
+        )
+        self.assertEqual(response.content, ERROR_DOESNT_EXIST)
+        request_dict = {
+            "name": "Dionysus3",
+            "packages": [
+            ],
+        }
+        response = c.post(
+            "/api/projects/",
+            json.dumps(request_dict),
+            content_type="application/json",
+        )
+        self.assertContains(
+            response, "", count=None, status_code=400
+        )
+        self.assertEqual(response.content, ERROR_DOESNT_EXIST)
+        request_dict = {
+            "packages": [
+                {"name": "wine-deamonizer"},
+            ],
+        }
+        response = c.post(
+            "/api/projects/",
+            json.dumps(request_dict),
+            content_type="application/json",
+        )
+        self.assertContains(
+            response, "", count=None, status_code=400
+        )
+        self.assertEqual(response.content, b'{"name":["This field is required."]}')
+        request_dict = {
+            "name": "DionysusLastTry",
+            "packages": [
+                {"name": "wine-deamonizer", "version": "1.0.1"},
+            ],
+        }
+        response = c.post(
+            "/api/projects/",
+            json.dumps(request_dict),
+            content_type="application/json",
+        )
+        self.assertContains(
+            response, "", count=None, status_code=201
+        )
