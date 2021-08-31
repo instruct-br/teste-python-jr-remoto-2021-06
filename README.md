@@ -13,19 +13,7 @@ alguma solução para este exercício ele **não** será avaliado.
 > **apenas se** você estiver no processo seletivo da vaga de _Desenvolvedor(a) 
 > Python Júnior [REMOTO]_.
 
-
-<details> 
-  <summary>Quer se candidatar para uma vaga na Instruct? </summary>
-
-Siga as instruções no site: https://instruct.com.br/trabalhe-com-a-gente/
-
-Nessa página estão listadas as vagas abertas hoje e todos os detalhes de nosso
-processo seletivo. Se não encontrou uma vaga que pareça adequada confira a
-página novamente em um ou dois meses, pois ela é atualizada com frequência.
-
-</details>
-
-
+Para saber mais sobre a empresa, leia o [FAQ](#FAQ)
 
 ## O problema
 
@@ -206,6 +194,27 @@ k6 run -e API_BASE='http://localhost:8080/' tests-open.js
     - Considere documentar sua API com Swagger UI ou ReDoc
 - [Não teste apenas o _Happy Path_](https://cucumber.io/blog/test-automation/happy-unhappy-paths-why-you-need-to-test-both/)
 
+**Boa sorte!**
+
 ---
 
-**Boa sorte!**
+## FAQ
+
+### Como me candidatar para trabalhar na Instruct?
+
+As inscrições são feitas através das vagas publicadas no site: https://instruct.com.br/trabalhe-com-a-gente/
+
+Nessa página estão listadas as vagas abertas e todos os detalhes de nosso
+processo seletivo.
+
+### Como ser avisado de novas vagas?
+
+[Siga a Instruct no Linkedin](https://www.linkedin.com/company/instructbr).
+
+Sempre publicamos quando novas vagas são abertas.
+
+### Como é trabalhar na Instruct?
+
+Você pode ler nosso [Handbook](https://github.com/instruct-br/handbook). Ele é a referência completa sobre como a Instruct funciona.
+
+Destaque especial para as atribuições do papel de [Analista de Desenvolvimento Júnior](https://github.com/instruct-br/handbook/blob/main/papeis.md#analista-de-desenvolvimento-j%C3%BAnior)
