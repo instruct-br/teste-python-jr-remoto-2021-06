@@ -186,12 +186,6 @@ k6 run -e API_BASE='http://localhost:8080/' tests-open.js
 ## Recomendações finais
 
 - Não deixe para fazer na última hora
-- Atente-se para boas práticas da linguagem, siga a PEP 8
-- Considere escrever testes automatizados
-- Escreva documentação
-    - Mude este README. Descreva sua aplicação, explique o que ela faz e porque é útil.
-    - Explique como testar a aplicação
-    - Considere documentar sua API com Swagger UI ou ReDoc
 - [Não teste apenas o _Happy Path_](https://cucumber.io/blog/test-automation/happy-unhappy-paths-why-you-need-to-test-both/)
 
 **Boa sorte!**
