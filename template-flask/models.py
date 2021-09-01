@@ -28,3 +28,12 @@ class PackageRelease(Base):
     version = Column(String)
 
     project_id = Column(Integer, ForeignKey('project.id'))
+
+    def __init__(self, id=None, name=None, version=None, project_id=None):
+        self.id = id
+        self.name = name
+        self.version = version
+        self.project_id = project_id
+
+    def __repr__(self):
+            return f'<Project {self.name}>'
