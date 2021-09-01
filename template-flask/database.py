@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 if os.environ.get("FLASK_ENV") == "development":
-    database_url = 'sqlite:////tmp/test.db'
+    database_url = 'sqlite:///db.sqlite3'
 else:
     database_url = os.environ.get('DATABASE_URL').replace(
         'postgres', 'postgresql'

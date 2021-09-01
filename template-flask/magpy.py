@@ -12,26 +12,18 @@ def add_project():
     # TODO
     # - Processar os pacotes recebidos
     # - Persistir informações no banco
-    project = Project(id="1", name="teste")
-    db_session.add(project)
-    db_session.commit()
     return {'foo': 'bar'}
 
 @app.route("/api/projects/<string:project_name>", methods=["GET"])
 def show_project_detail(project_name):
     # TODO
     # - Retornar informações do projeto
-    result = Project.query.filter_by(name='teste').first()
-    print(result)
     return {'foo': 'bar'}
 
 @app.route("/api/projects/<string:project_name>", methods=["DELETE"])
 def delete_project(project_name):
     # TODO
     # - Apagar o projeto indicado
-    result = Project.query.filter_by(name='teste').first()
-    db_session.delete(result)
-    db_session.commit()
     return {'foo': 'bar'}
 
 @app.teardown_appcontext

@@ -24,7 +24,7 @@ class PackageRelease(Base):
     __tablename__ = 'package_release'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, unique=True)
+    name = Column(String)
     version = Column(String)
 
     project_id = Column(Integer, ForeignKey('project.id'))
