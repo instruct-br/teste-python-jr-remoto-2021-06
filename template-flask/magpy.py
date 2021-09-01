@@ -5,7 +5,7 @@ from models import Project
 
 
 app = Flask(__name__)
-init_db()
+# init_db()
 
 @app.route("/api/projects", methods=["POST"])
 def add_project():
