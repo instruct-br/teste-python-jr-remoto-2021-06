@@ -1,13 +1,16 @@
-from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 from database import Base
 
 
 class Project(Base):
-    __tablename__ = 'projects'
+    __tablename__ = 'project'
 
-    id = Column(String, primary_key=True)
+    id = Column(Integer, primary_key=True)
     name = Column(String, unique=True)
+
+    package_releases = relationship('PackageRelease', backref='project')
 
     def __init__(self, id=None, name=None):
         self.id = id
@@ -15,3 +18,13 @@ class Project(Base):
 
     def __repr__(self):
             return f'<Project {self.name}>'
+
+
+class PackageRelease(Base):
+    __tablename__ = 'package_release'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True)
+    version = Column(String)
+
+    project_id = Column(Integer, ForeignKey('project.id'))
