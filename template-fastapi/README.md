@@ -14,7 +14,7 @@ Para subir este app em ambiente de desenvolvimento de acordo com o seu sistema o
 
 - Para Windows:
 ```sh
-./windows_run.ps1
+.\windows_run.ps1
 ```
 
 - Para Linux:
