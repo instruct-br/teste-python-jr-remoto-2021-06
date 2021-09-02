@@ -6,14 +6,22 @@ Este é um template de uma aplicação [Flask](https://flask.palletsprojects.com
 
 Instale as dependências deste template utilizando o [Pipenv](https://pipenv.pypa.io/en/latest/), com o seguinte comando:
 
-```sh
+```
 pipenv install
 ```
 
-Para subir este app em ambiente de desenvolvimento, execute:
+Para subir este app em ambiente de desenvolvimento de acordo com o seu sistema operacional, execute:
 
-```sh
+- Para Linux
+
+```
 sh run.sh
+```
+
+- Para Windows
+
+```
+./windows_run.ps1
 ```
 
 Este template, está configurado para utilizar um banco sqlite em ambiente de dev, e o Postgres em ambiente de prod.
@@ -22,12 +30,12 @@ Este template, está configurado para utilizar um banco sqlite em ambiente de de
 
 Caso você faça alguma alteração nas models, e queira executar uma migration, utilize o seguinte comando:
 
-```sh
+```
 alembic revision --autogenerate -m "<nome da migration>"
 ```
 
 Para aplicar manualmente as migrations geradas no passo anterior, utilize o comando:
 
-```sh
+```
 alembic upgrade head
 ```
