@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 if os.environ.get("FASTAPI_ENV") == "development":
-    database_url = "sqlite:///test.db"
+    database_url = "sqlite:///db.sqlite3"
     engine = create_engine(database_url, connect_args={"check_same_thread": False})
 else:
     database_url = os.environ.get("DATABASE_URL").replace("postgres", "postgresql")
