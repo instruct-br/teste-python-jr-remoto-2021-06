@@ -21,7 +21,7 @@ sh run.sh
 - Para Windows
 
 ```
-./windows_run.ps1
+.\windows_run.ps1
 ```
 
 Este template, está configurado para utilizar um banco sqlite em ambiente de dev, e o Postgres em ambiente de prod.
