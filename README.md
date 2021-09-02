@@ -114,24 +114,34 @@ DELETE /api/projects/titan
 
 ## Esqueleto
 
-Este repositório vem com um esqueleto para iniciar o projeto. Ele já tem 
-algumas partes implementadas e está pronto para o deploy na [Heroku](https://www.heroku.com/).
+Este repositório vem com três esqueletos para iniciar o projeto. Eles já tem 
+algumas partes implementadas e estão prontos para o deploy na 
+[Heroku](https://www.heroku.com/).
 
 Conforme detalhado na próxima seção deste README, nós iremos avaliar a sua API
-publicada nessa plataforma, então é recomendado que você use este esqueleto 
+publicada nessa plataforma, então é recomendado que você use uma dessas opções 
 como base para a sua solução. 
 
-Usando esta base, você precisará:
+As opções disponíves estão nas respectivas pastas:
+- template-django: esqueleto com Django e Django Rest Framework
+- template-fastapi: esqueleto com FastAPI e SQLAlchemy
+- template-flask: esqueleto com Flask e SQLAlchemy
 
-1. Fazer uma cópia deste repositório
-2. Implementar sua solução
-3. Criar uma conta gratuita no Heroku
-4. Criar um novo app
-5. Seguir as instruções da seção _Deploy using Heroku Git_
-6. Adicionar o usuário `jobs@instruct.com.br` como colaborador do app
-
+Você pode usar outro framework web desde que sua solução use Python. No entanto
+a configuração do projeto para o deploy será responsabilidade sua. Se você 
+nunca mexeu com nenhuma dessas opções, a recomendação é usar o template-django.
 Fique à vontade para fazer as alterações que julgar necessárias no código
 disponibilizado.
+
+Para usar uma dessas bases, você precisará:
+
+1. Fazer uma cópia da pasta
+2. Iniciar um repositório git nessa pasta
+3. Implementar sua solução
+4. Criar uma conta gratuita no Heroku
+5. Criar um novo app
+6. Seguir as instruções da seção _Deploy using Heroku Git_
+7. Adicionar o usuário `jobs@instruct.com.br` como colaborador do app
 
 ## Avaliação
 
